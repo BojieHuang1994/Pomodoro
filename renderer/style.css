@@ -1,0 +1,200 @@
+/* ===== 全局 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  background: #1f2233;
+  color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  user-select: none;
+  -webkit-app-region: drag;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 24px;
+  width: 100%;
+  max-width: 360px;
+}
+
+/* ===== 模式切换 ===== */
+.mode-tabs {
+  display: flex;
+  background: #2a2d3e;
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+  -webkit-app-region: no-drag;
+}
+
+.mode-tab {
+  border: none;
+  background: transparent;
+  color: #888;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode-tab.active {
+  background: #3a3d52;
+  color: #e0e0e0;
+}
+
+.mode-tab:hover:not(.active) {
+  color: #bbb;
+}
+
+/* ===== 圆形进度环 ===== */
+.timer-ring-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+
+.timer-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: #2a2d3e;
+  stroke-width: 8;
+}
+
+.ring-progress {
+  fill: none;
+  stroke: #ff6b6b;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 666; /* 2 * PI * 106 ≈ 666 */
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.3s linear, stroke 0.3s ease;
+}
+
+/* 休息模式颜色 */
+.ring-progress.break-mode {
+  stroke: #4ecdc4;
+}
+
+.timer-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#timeDisplay {
+  font-size: 48px;
+  font-weight: 200;
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== 按钮 ===== */
+.controls {
+  display: flex;
+  gap: 12px;
+  -webkit-app-region: no-drag;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #e55a5a;
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.btn-secondary {
+  background: #3a3d52;
+  color: #e0e0e0;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #4a4d62;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #888;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  color: #e0e0e0;
+  background: #2a2d3e;
+}
+
+/* ===== 统计 ===== */
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #2a2d3e;
+  border-radius: 12px;
+  padding: 16px 24px;
+  width: 100%;
+}
+
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 600;
+  color: #ff6b6b;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #888;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: #3a3d52;
+}

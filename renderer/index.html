@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>番茄钟</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 模式标签 -->
+    <div class="mode-tabs">
+      <button id="modeFocus" class="mode-tab active">🍅 专注</button>
+      <button id="modeBreak" class="mode-tab">☕ 休息</button>
+    </div>
+
+    <!-- 圆形进度计时器 -->
+    <div class="timer-ring-container">
+      <svg class="timer-ring" viewBox="0 0 240 240">
+        <circle class="ring-bg" cx="120" cy="120" r="106" />
+        <circle class="ring-progress" cx="120" cy="120" r="106" />
+      </svg>
+      <div class="timer-display">
+        <span id="timeDisplay">25:00</span>
+      </div>
+    </div>
+
+    <!-- 控制按钮 -->
+    <div class="controls">
+      <button id="btnStart" class="btn btn-primary">开始</button>
+      <button id="btnPause" class="btn btn-secondary" disabled>暂停</button>
+      <button id="btnReset" class="btn btn-ghost">重置</button>
+    </div>
+
+    <!-- 今日统计 -->
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-value" id="statCount">0</span>
+        <span class="stat-label">今日专注次数</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-value" id="statMinutes">0</span>
+        <span class="stat-label">今日专注时长（分钟）</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
