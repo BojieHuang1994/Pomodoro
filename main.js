@@ -8,12 +8,10 @@ let isQuitting = false;
 
 // 统计数据存放在用户数据目录，跨重启持久化
 const STATS_FILE = path.join(app.getPath('userData'), 'stats.json');
-const EMPTY_DAY_STATS = Object.freeze({ focusCount: 0, focusMinutes: 0 });
-const todayKey = () => new Date().toISOString().slice(0, 10);
 
 function readStats() {
   try {
-    return JSON.parse(fs.readFileSync(statsFile(), 'utf-8'));
+    return JSON.parse(fs.readFileSync(STATS_FILE, 'utf-8'));
   } catch {
     return {}; // 结构：{ "2026-05-31": { focusCount: 3, focusMinutes: 75 }, ... }
   }
@@ -21,7 +19,7 @@ function readStats() {
 
 function writeStats(data) {
   try {
-    fs.writeFileSync(statsFile(), JSON.stringify(data, null, 2), 'utf-8');
+    fs.writeFileSync(STATS_FILE, JSON.stringify(data, null, 2), 'utf-8');
     return true;
   } catch (err) {
     console.error('写入统计失败:', err);
